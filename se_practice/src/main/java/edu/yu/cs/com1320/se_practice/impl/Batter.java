@@ -77,7 +77,7 @@ public class Batter extends Player {
     }
 
     public double getOnBasePercentage() {
-        double obp = (double)((this.h + this.bb + this.hbp) / ((this.pa - this.bb - this.hbp) + this.h + this.bb)) * 1000 / 1000.0;
+        double obp = (double)(this.h + this.bb + this.hbp) / this.pa;
         return DoubleRounder.round(obp, 3);
     }
 
@@ -106,7 +106,7 @@ public class Batter extends Player {
     }
 
     public double getSluggingPercentage() {
-        double slugging = ((double) this.getTotalBases() / (this.pa - this.bb - this.hbp)) * 1000 / 1000.0;
+        double slugging = ((double) this.getTotalBases() / (this.pa - this.bb - this.hbp));
         return DoubleRounder.round(slugging, 3);
     }
 

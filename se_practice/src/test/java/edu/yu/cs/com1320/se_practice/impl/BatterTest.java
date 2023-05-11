@@ -23,13 +23,28 @@ class BatterTest {
     @Test
     void getBattingAverage() {
         Batter dummy = s.get(3);
-        assertEquals(0.2, ajudge.getBattingAverage());
+        assertEquals(0.2, dummy.getBattingAverage());
     }
 
     @Test
+    void getTotalBases() {
+        Batter ajudge = s.get(0);
+        int total = ajudge.getTotalBases();
+        assertEquals(51, total);
+    }
+    
+    @Test
     void getSlugging() {
         Batter ajudge = s.get(0);
-        assertEquals(0.515, ajudge.getSluggingPercentage());
+        double slugging = ajudge.getSluggingPercentage();
+        assertEquals(0.500, slugging);
+    }
+
+    @Test
+    void getOBP() {
+        Batter ajudge = s.get(0);
+        double obp = ajudge.getOnBasePercentage();
+        assertEquals(0.364, obp);
     }
 
 }
