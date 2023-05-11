@@ -13,7 +13,7 @@ public class Pitcher extends Player {
 
     public Pitcher(String name, String team, String position, int g, int cg, int sho, int sv, double ip, int h, int r, int er, int hr, int bb, int so, int hbp) {
         String ipStr = Double.toString(ip).substring(Double.toString(ip).indexOf('.'));
-        if (!(ipStr.equals("0") || ipStr.equals("") || ipStr.equals("2") || ipStr.equals("1"))) {
+        if (!ipStr.equals("0") && !ipStr.equals("") && !ipStr.equals("2") && !ipStr.equals("1")) {
             throw new IllegalArgumentException("Innings pitched must end in a decimal of .0, .1, or .2");
         }
         this.name = name;
