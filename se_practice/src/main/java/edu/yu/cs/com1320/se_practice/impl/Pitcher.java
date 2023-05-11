@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import org.decimal4j.util.DoubleRounder;
+
 public class Pitcher extends Player {
     int g, sv, cg, sho, h, er, r, bb, hr, so, hbp;
     double ip;
@@ -13,7 +15,7 @@ public class Pitcher extends Player {
 
     public Pitcher(String name, String team, String position, int g, int cg, int sho, int sv, double ip, int h, int r, int er, int hr, int bb, int so, int hbp) {
         String ipStr = Double.toString(ip).substring(Double.toString(ip).indexOf('.'));
-        if (!(ipStr.equals("0") || ipStr.equals("") || ipStr.equals("2") || ipStr.equals("1"))) {
+        if (!(ipStr.equals(".0") || ipStr.equals("") || ipStr.equals(".2") || ipStr.equals(".1"))) {
             throw new IllegalArgumentException("Innings pitched must end in a decimal of .0, .1, or .2");
         }
         this.name = name;
@@ -124,12 +126,12 @@ public class Pitcher extends Player {
     public double getERA() {
         String ipStr = Double.toString(ip).substring(Double.toString(ip).indexOf('.'));
         double inningsPitched = 0;
-        if (ipStr.equals("1")) {
+        if (ipStr.equals(".1")) {
             inningsPitched = this.ip + 0.2;
-        } else if (ipStr.equals("2")) {
+        } else if (ipStr.equals(".2")) {
             inningsPitched = this.ip + 0.5;
         }
-        return Math.round(9 * this.er / inningsPitched * 100) / 100.0;
+        return DoubleRounder.round(((9 * this.er / inningsPitched * 100) / 100.0), 3);
     }
 
     public int getGames() {
