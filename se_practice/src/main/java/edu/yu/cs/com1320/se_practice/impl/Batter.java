@@ -6,13 +6,17 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import org.decimal4j.util.DoubleRounder;
+
 public class Batter extends Player {
     //Constructor: ints PA, R, H, 2B, 3B, HR, RBI, BB, SO, HBP, string team, string position
     //	Setters and getters for PA, AB, R, H, 2B, 3B, HR, RBI, BB, SO, BA, OBP, OPS, SLG, HBP, TB
 
     int pa, doubles, triples, rbi, h, r, bb, hr, so, hbp;
+    String team, name, position;
 
     public Batter(String name, String team, String position, int pa, int r, int h, int doubles, int triples, int hr, int rbi, int bb, int so, int hbp) {
+        this.name = name;
         this.team = team;
         this.position = position;
         this.bb = bb;
@@ -68,11 +72,13 @@ public class Batter extends Player {
     }
 
     public double getBattingAverage() {
-        return ((double) this.h / (this.pa - this.bb - this.hbp) * 1000) / 1000.0;
+        double ba = ((double) this.h / (this.pa - this.bb - this.hbp) * 1000) / 1000.0;
+        return DoubleRounder.round(ba, 3);
     }
 
     public double getOnBasePercentage() {
-        return (double)((this.h + this.bb + this.hbp) / ((this.pa - this.bb - this.hbp) + this.h + this.bb)) * 1000 / 1000.0;
+        double obp = (double)((this.h + this.bb + this.hbp) / ((this.pa - this.bb - this.hbp) + this.h + this.bb)) * 1000 / 1000.0;
+        return DoubleRounder.round(obp, 3);
     }
 
     public double getOnBasePlusSlugging() {
@@ -100,7 +106,8 @@ public class Batter extends Player {
     }
 
     public double getSluggingPercentage() {
-        return ((double) this.getTotalBases() / (this.pa - this.bb - this.hbp)) * 1000 / 1000.0;
+        double slugging = ((double) this.getTotalBases() / (this.pa - this.bb - this.hbp)) * 1000 / 1000.0;
+        return DoubleRounder.round(slugging, 3);
     }
 
     public int getHits() {

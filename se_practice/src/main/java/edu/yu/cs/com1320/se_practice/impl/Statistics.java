@@ -33,7 +33,7 @@ public class Statistics {
     public List<String> getTeamBattingLeaders(String stat, String team) {
         List<Batter> players = new ArrayList<>();
         for (Batter b : this.batters) {
-            if (b.getName().equals(team)) {
+            if (b.getTeam().equals(team)) {
                 players.add(b);
             }
         }
@@ -43,7 +43,7 @@ public class Statistics {
     public List<String> getTeamPitchingLeaders(String stat, String team) {
         List<Pitcher> players = new ArrayList<>();
         for (Pitcher p : this.pitchers) {
-            if (p.getName().equals(team)) {
+            if (p.getTeam().equals(team)) {
                 players.add(p);
             }
         }
