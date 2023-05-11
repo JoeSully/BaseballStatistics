@@ -11,7 +11,7 @@ public class Pitcher extends Player {
     double ip;
     String name, team, position;
 
-    public Pitcher(String name, String team, String position, int g, int sv, int cg, int sho, int h, int er, int r, int bb, int hr, int so, int hbp, double ip) {
+    public Pitcher(String name, String team, String position, int g, int cg, int sho, int sv, double ip, int h, int r, int er, int hr, int bb, int so, int hbp) {
         String ipStr = Double.toString(ip).substring(Double.toString(ip).indexOf('.'));
         if (!(ipStr.equals("0") || ipStr.equals("") || ipStr.equals("2") || ipStr.equals("1"))) {
             throw new IllegalArgumentException("Innings pitched must end in a decimal of .0, .1, or .2");
@@ -122,7 +122,14 @@ public class Pitcher extends Player {
     }
 
     public double getERA() {
-        return Math.round(9 * this.er / this.ip * 100) / 100.0;
+        String ipStr = Double.toString(ip).substring(Double.toString(ip).indexOf('.'));
+        double inningsPitched = 0;
+        if (ipStr.equals("1")) {
+            inningsPitched = this.ip + 0.2;
+        } else if (ipStr.equals("2")) {
+            inningsPitched = this.ip + 0.5;
+        }
+        return Math.round(9 * this.er / inningsPitched * 100) / 100.0;
     }
 
     public int getGames() {
@@ -160,23 +167,23 @@ public class Pitcher extends Player {
     @Override
     public List<String> getAllStats() {
         List<String> results = new ArrayList<>();
+        results.add("Earned Run Average: " + this.getERA());
         results.add("Games: " + this.getGames());
-        results.add("Hits Allowed: " + this.getHitsAllowed());
-        results.add("Innings Pitched: " + this.getInningsPitched());
-        results.add("Home Runs Allowed: " + this.getHomeRunsAllowed());
-        results.add("Runs Allowed: " + this.getRunsAllowed());
-        results.add("Earned Runs Allowed: " + this.getEarnedRuns());
+        results.add("Complete Games: " + this.getCompleteGames());
         results.add("Shutouts: " + this.getShutouts());
         results.add("Saves: " + this.getSaves());
-        results.add("Earned Run Average: " + this.getERA());
-        results.add("Complete Games: " + this.getCompleteGames());
-        results.add("Strikeouts: " + this.getStrikeouts());
+        results.add("Innings Pitched: " + this.getInningsPitched());
+        results.add("Hits Allowed: " + this.getHitsAllowed());
+        results.add("Runs Allowed: " + this.getRunsAllowed());
+        results.add("Earned Runs Allowed: " + this.getEarnedRuns());
+        results.add("Home Runs Allowed: " + this.getHomeRunsAllowed());
         results.add("Walks: " + this.getWalks());
+        results.add("Strikeouts: " + this.getStrikeouts());
         results.add("Hit By Pitch: " + this.getHitByPitch());
         results.add("Walks and Hits Per Inning Pitched: " + this.getWhip());
         results.add("Hits Per 9 Innings: " + this.getHitsPer9());
-        results.add("Walks Per 9 Innings: " + this.getWalksPer9());
         results.add("Home Runs Per 9 Innings: " + this.getHomeRunsPer9());
+        results.add("Walks Per 9 Innings: " + this.getWalksPer9());
         results.add("Strikeouts Per 9 Innings: " + this.getStrikeoutsPer9());
         return results;
     }

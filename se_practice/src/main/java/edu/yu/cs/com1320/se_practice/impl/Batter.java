@@ -13,7 +13,7 @@ public class Batter extends Player {
     int pa, doubles, triples, rbi, h, r, bb, hr, so, hbp;
     String team, name, position;
 
-    public Batter(String name, String team, String position, int pa, int doubles, int triples, int rbi, int h, int r, int bb, int hr, int so, int hbp) {
+    public Batter(String name, String team, String position, int pa, int r, int h, int doubles, int triples, int hr, int rbi, int bb, int so, int hbp) {
         this.name = name;
         this.team = team;
         this.position = position;
@@ -139,22 +139,22 @@ public class Batter extends Player {
         results.add("Name: " + this.name);
         results.add("Team: " + this.team);
         results.add("Position: " + this.position);
-        results.add("Hits: " + this.getHits());
-        results.add("Runs: " + this.getRuns());
-        results.add("Home Runs: " + this.getHomeRuns());
-        results.add("Runs Batted In: " + this.getRunsBattedIn());
-        results.add("Doubles: " + this.getDoubles());
-        results.add("Triples: " + this.getTriples());
-        results.add("Total Bases: " + this.getTotalBases());
-        results.add("Hit By Pitch: " + this.getHitByPitch());
-        results.add("Walks: " + this.getWalks());
-        results.add("Strikeouts: " + this.getStrikeouts());
         results.add("Plate Appearances: " + this.getPlateAppearances());
         results.add("At Bats: " + this.getAtBats());
-        results.add("Slugging Percentage: " + this.getSluggingPercentage());
+        results.add("Runs: " + this.getRuns());
+        results.add("Hits: " + this.getHits());
+        results.add("Doubles: " + this.getDoubles());
+        results.add("Triples: " + this.getTriples());
+        results.add("Home Runs: " + this.getHomeRuns());
+        results.add("Runs Batted In: " + this.getRunsBattedIn());
+        results.add("Walks: " + this.getWalks());
+        results.add("Strikeouts: " + this.getStrikeouts());
         results.add("Batting Average: " + this.getBattingAverage());
-        results.add("On Base Plus Slugging Percentage: " + this.getOnBasePercentage());
         results.add("On Base Percentage: " + this.getOnBasePercentage());
+        results.add("Slugging Percentage: " + this.getSluggingPercentage());
+        results.add("On Base Plus Slugging Percentage: " + this.getOnBasePercentage());
+        results.add("Total Bases: " + this.getTotalBases());
+        results.add("Hit By Pitch: " + this.getHitByPitch());
         return results;
     }
 }
