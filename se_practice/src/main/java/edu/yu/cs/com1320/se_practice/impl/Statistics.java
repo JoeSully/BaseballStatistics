@@ -50,17 +50,25 @@ public class Statistics {
         return this.comparePitchers(players, stat);
     }
 
-    /*public List<String> getPositionLeaders(String stat, String position) {
-        List<Player> players = new ArrayList<>();
-        List<Player> allPlayers = new ArrayList<>(this.batters);
-        allPlayers.addAll(this.pitchers);
-        for (Player p : allPlayers) {
+    public List<String> getPitcherPositionLeaders(String stat, String position) {
+        List<Pitcher> players = new ArrayList<>();
+        for (Pitcher p : this.pitchers) {
             if (p.getPosition().equals(position)) {
                 players.add(p);
             }
         }
         return this.comparePitchers(players, stat);
-    }*/
+    }
+
+    public List<String> getBatterPositionLeaders(String stat, String position) {
+        List<Batter> players = new ArrayList<>();
+        for (Batter p : this.batters) {
+            if (p.getPosition().equals(position)) {
+                players.add(p);
+            }
+        }
+        return this.compareBatters(players, stat);
+    }
 
     public List<String> getLeagueBattingLeaders(String stat) {
         return this.compareBatters(this.batters, stat);
