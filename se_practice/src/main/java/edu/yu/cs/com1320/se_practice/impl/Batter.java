@@ -138,6 +138,21 @@ public class Batter extends Player {
     }
 
     @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public String getPosition(){
+        return this.position;
+    }
+
+    @Override
+    public String getTeam() {
+        return this.team;
+    }
+
+    @Override
     public List<String> getAllStats() {
         List<String> results = new ArrayList<>();
         results.add("Name: " + this.name);

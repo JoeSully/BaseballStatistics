@@ -124,14 +124,14 @@ public class Pitcher extends Player {
     }
 
     public double getERA() {
-        String ipStr = Double.toString(ip).substring(Double.toString(ip).indexOf('.'));
-        double inningsPitched = 0;
+        String ipStr = Double.toString(this.ip).substring(Double.toString(this.ip).indexOf('.'));
+        double inningsPitched = this.ip;
         if (ipStr.equals(".1")) {
-            inningsPitched = this.ip + 0.2;
+            inningsPitched = this.ip + 0.23333333333333333333;
         } else if (ipStr.equals(".2")) {
-            inningsPitched = this.ip + 0.5;
+            inningsPitched = this.ip + 0.46666666666666666666;
         }
-        return DoubleRounder.round(((9 * this.er / inningsPitched * 100) / 100.0), 3);
+        return DoubleRounder.round(((9 * this.er / inningsPitched * 100) / 100.0), 2);
     }
 
     public int getGames() {
@@ -164,6 +164,21 @@ public class Pitcher extends Player {
 
     public double getWalksPer9() {
         return Math.round(9 * this.bb / this.ip * 10) / 10.0;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public String getPosition(){
+        return this.position;
+    }
+
+    @Override
+    public String getTeam() {
+        return this.team;
     }
 
     @Override

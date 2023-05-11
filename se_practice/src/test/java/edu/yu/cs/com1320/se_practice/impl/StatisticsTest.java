@@ -41,18 +41,19 @@ class StatisticsTest {
     @Test
     void getTeamBattingLeaders() {
         List<String> l = new ArrayList<>();
-        l.add("Anthony Rizzo, yankees, 1b, Batting Average: 0.302");
-        l.add("DJ Lemahieu, yankees, 3b, Batting Average: 0.277");
-        l.add("Aaron Judge, yankees, cf, Batting Average: 0.273");
-        s.getTeamBattingLeaders("ba", "yankees");
+        l.add("Anthony Rizzo, yankees, 1b, Batting Average: 0.353\n");
+        l.add("DJ Lemahieu, yankees, 3b, Batting Average: 0.275\n");
+        l.add("Aaron Judge, yankees, cf, Batting Average: 0.265\n");
+        assertEquals(l, s.getTeamBattingLeaders("ba", "yankees"));
     }
 
     @Test
     void getTeamPitchingLeaders() {
-    }
-
-    @Test
-    void getPitcherPositionLeaders() {
+        List<String> l = new ArrayList<>();
+        l.add("Wandy Peralta, yankees, rp, Earned Run Average: 2.03\n");
+        l.add("Gerrit Cole, yankees, sp, Earned Run Average: 2.09\n");
+        l.add("Clay Holmes, yankees, cl, Earned Run Average: 3.46\n");
+        assertEquals(l, s.getTeamPitchingLeaders("era", "yankees"));
     }
 
     @Test
@@ -68,14 +69,7 @@ class StatisticsTest {
     }
 
     @Test
-    void compareBatters() {
-    }
-
-    @Test
-    void comparePitchers() {
-    }
-
-    @Test
     void searchPlayerStats() {
+        assertThrows(IllegalArgumentException.class, () -> s.searchPlayerStats(null));
     }
 }

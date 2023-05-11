@@ -3,6 +3,7 @@ package edu.yu.cs.com1320.se_practice.impl;
 import edu.yu.cs.com1320.se_practice.Player;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
@@ -151,8 +152,9 @@ public class Statistics {
         players.sort(comp);
         List<String> results = new ArrayList<>();
         for (Batter p : players) {
-            results.add(p.getName() + ", " + p.getTeam() + ", " + p.getPosition() + ", " + getStat.apply(p));
+            results.add(p.getName() + ", " + p.getTeam() + ", " + p.getPosition() + ", " + getStat.apply(p) + "\n");
         }
+        Collections.reverse(results);
         return results;
     }
 
@@ -237,14 +239,14 @@ public class Statistics {
         players.sort(comp);
         List<String> results = new ArrayList<>();
         for (Pitcher p : players) {
-            results.add(p.getName() + ", " + p.getTeam() + ", " + p.getPosition() + ", " + getStat.apply(p));
+            results.add(p.getName() + ", " + p.getTeam() + ", " + p.getPosition() + ", " + getStat.apply(p) + "\n");
         }
         return results;
     }
 
     public List<String> searchPlayerStats(String player) {
         if (player == null) {
-            throw new IllegalArgumentException("PLayer cna't be null");
+            throw new IllegalArgumentException("Player can't be null");
         }
         return this.trie.get(player).getAllStats();
     }

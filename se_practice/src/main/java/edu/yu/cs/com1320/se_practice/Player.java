@@ -7,17 +7,11 @@ public abstract class Player {
     protected String position;
     protected String name;
 
-    public String getName() {
-        return this.name;
-    }
+    public abstract String getName();
 
-    public String getTeam() {
-        return this.team;
-    }
+    public abstract String getTeam();
 
-    public String getPosition() {
-        return this.position;
-    }
+    public abstract String getPosition();
 
     public abstract List<String> getAllStats();
 }

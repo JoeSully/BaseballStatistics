@@ -26,9 +26,6 @@ public class Trie<Value> {
             return x;
         }
         char c = key.charAt(d);
-        if (c < 48 || (c > 57 && c < 65) || (c > 90 && c < 97) || c > 122) {
-            throw new IllegalArgumentException();
-        }
         x.links.put(c, this.put(x.links.get(c), key, val, d + 1));
         return x;
     }
