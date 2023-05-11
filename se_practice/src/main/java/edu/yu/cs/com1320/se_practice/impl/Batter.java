@@ -11,8 +11,10 @@ public class Batter extends Player {
     //	Setters and getters for PA, AB, R, H, 2B, 3B, HR, RBI, BB, SO, BA, OBP, OPS, SLG, HBP, TB
 
     int pa, doubles, triples, rbi, h, r, bb, hr, so, hbp;
+    String team, name, position;
 
     public Batter(String name, String team, String position, int pa, int doubles, int triples, int rbi, int h, int r, int bb, int hr, int so, int hbp) {
+        this.name = name;
         this.team = team;
         this.position = position;
         this.bb = bb;

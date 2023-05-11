@@ -9,12 +9,14 @@ import java.util.List;
 public class Pitcher extends Player {
     int g, sv, cg, sho, h, er, r, bb, hr, so, hbp;
     double ip;
+    String name, team, position;
 
     public Pitcher(String name, String team, String position, int g, int sv, int cg, int sho, int h, int er, int r, int bb, int hr, int so, int hbp, double ip) {
         String ipStr = Double.toString(ip).substring(Double.toString(ip).indexOf('.'));
         if (!(ipStr.equals("0") || ipStr.equals("") || ipStr.equals("2") || ipStr.equals("1"))) {
             throw new IllegalArgumentException("Innings pitched must end in a decimal of .0, .1, or .2");
         }
+        this.name = name;
         this.team = team;
         this.position = position;
         this.bb = bb;
